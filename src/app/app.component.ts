@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {CommonCoreDataService} from './common-core-data.service';
+import {Component} from "@angular/core";
+import {CommonCoreDataService} from "./common-core-data.service";
 
 @Component({
   selector: 'app-root',
@@ -7,18 +7,28 @@ import {CommonCoreDataService} from './common-core-data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'unittesting';
+  title = "Unit testing";
+
   rowData: any ;
 
   constructor(private commonCoreDataService: CommonCoreDataService) {
-    this.getCommonCoreDataByYear();
   }
 
+  public filter(grade: any) {
+    this.rowData = this.rowData.results.filter(data =>
+      data.highest_grade_offered === +grade.target.value);
+  }
 
-  public getCommonCoreDataByYear() {
-    this.commonCoreDataService.getCommonCoreDataByYear('2016')
+  /**
+   * Retrieves common core data by year
+   * @param year to retrieve data for
+   */
+  public getCommonCoreDataByYear(year: any) {
+    this.commonCoreDataService.getCommonCoreDataByYear(year.target.value)
       .subscribe(schools => {
         this.rowData = schools;
       });
+
+
   }
 }
