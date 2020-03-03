@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from '@angular/core';
 import {CommonCoreDataService} from "./common-core-data.service";
 
 @Component({
@@ -6,16 +6,22 @@ import {CommonCoreDataService} from "./common-core-data.service";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = "Unit testing";
+export class AppComponent implements OnInit{
+  private title = "Unit testing";
+  private rowData: any ;
+  private searchYear = "2016";
+  private searchGrade = "12";
 
-  rowData: any ;
+  constructor(private commonCoreDataService: CommonCoreDataService,) {
 
-  constructor(private commonCoreDataService: CommonCoreDataService) {
+  }
+
+  ngOnInit() {
+    this.getCommonCoreDataByYear("2016");
   }
 
   public filter(grade: any) {
-    this.rowData = this.rowData.results.filter(data =>
+    this.rowData = this.rowData.filter(data =>
       data.highest_grade_offered === +grade.target.value);
   }
 
@@ -23,10 +29,10 @@ export class AppComponent {
    * Retrieves common core data by year
    * @param year to retrieve data for
    */
-  public getCommonCoreDataByYear(year: any) {
-    this.commonCoreDataService.getCommonCoreDataByYear(year.target.value)
+  public getCommonCoreDataByYear(year: string) {
+    this.commonCoreDataService.getCommonCoreDataByYear(year)
       .subscribe(schools => {
-        this.rowData = schools;
+        this.rowData = schools.results;
       });
 
 

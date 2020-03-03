@@ -1,11 +1,10 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
   </h1>
 </div>
 <span>Highest Grade Completed</span>
-<select (change)="filter($event)">
+<select [(ngModel)]="searchGrade" (change)="filter(searchGrade)">
   <option>12</option>
   <option>10</option>
   <option>9</option>
@@ -20,8 +19,9 @@
   <option>0</option>
 </select>
 <div>
-  <select (change)="getCommonCoreDataByYear($event)">
-      <option>2016</option>
+  <span>Year</span>
+  <select [(ngModel)]="searchYear" (change)="getCommonCoreDataByYear(searchYear)">
+      <option selected>2016</option>
       <option>2015</option>
       <option>2014</option>
       <option>2013</option>
@@ -30,4 +30,5 @@
 <pre>
     {{ rowData | json }}
 </pre>
+
 
