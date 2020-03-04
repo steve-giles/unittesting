@@ -58,7 +58,7 @@ describe('AppComponent', () => {
   });
 
   it('should retrieve a list of schools for a specific year', fakeAsync(() => {
-    const yearIs2015 = (currentValue) => currentValue.year === 2016;
+    const yearIs2015 = (currentValue) => currentValue.year === 2015;
 
     component.getCommonCoreDataByYear('2015');
 
