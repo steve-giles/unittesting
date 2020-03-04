@@ -7,10 +7,10 @@ import {CommonCoreDataService} from "./common-core-data.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  private title = "Unit testing";
-  private rowData: any ;
-  private searchYear = "2016";
-  private searchGrade = "12";
+  title = "Unit testing";
+  rowData: any ;
+  searchYear = "2016";
+  searchGrade = "12";
 
   constructor(private commonCoreDataService: CommonCoreDataService,) {
 
