@@ -57,11 +57,11 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('Unit testing');
   });
 
-  it('should retrieve a list of schools for a specific year', fakeAsync(() => {
+  it('should retrieve a list of schools for a specific year', () => {
     const yearIs2015 = (currentValue) => currentValue.year === 2015;
 
     component.getCommonCoreDataByYear('2015');
 
     expect(component.rowData.every(yearIs2015)).toBeTruthy();
-  }));
+  });
 });
